@@ -1,9 +1,3 @@
-'''
-Todo: resume / Tensorboar
-Modified Data: 31/10/2019
-Author: Yadan Luo, Zijian Wang
-'''
-
 from __future__ import print_function, absolute_import
 import os
 import argparse
