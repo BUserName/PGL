@@ -14,10 +14,9 @@ import torch
 import matplotlib.pyplot as plt
 from utils.visualization import visualize_TSNE
 
-# Modified here
 torch.backends.cudnn.deterministic = True
 torch.backends.cudnn.benchmark = True
-import tensorboardX
+
 
 import sys
 import warnings
@@ -31,12 +30,10 @@ os.environ["CUDA_VISIBLE_DEVICES"]="0,1"
 # data
 from data_loader import Visda_Dataset, Office_Dataset, Home_Dataset, Visda18_Dataset
 from model_trainer import ModelTrainer
-
-# Modified here
 from utils.logger import Logger
 
 def main(args):
-    # Modified here
+
     total_step = 100//args.EF
 
     # set random seed
@@ -78,8 +75,6 @@ def main(args):
     label_flag = None
     selected_idx = None
     args.experiment = set_exp_name(args)
-
-    # Modified here
     logger = Logger(args)
 
     if not args.visualization:
@@ -88,15 +83,13 @@ def main(args):
 
             print("This is {}-th step with EF={}%".format(step, args.EF))
 
-            # Modified here
             trainer = ModelTrainer(args=args, data=data, step=step, label_flag=label_flag, v=selected_idx, logger=logger)
 
             # train the model
             args.log_epoch = 4 + step//2
-            # 10 + (step // 2) * args.log_epoch
             trainer.train(step, epochs= 4 + (step) * 2, step_size=args.log_epoch)
-            #trainer.trainwognn(step, epochs= 2 + (step) * 2 , step_size=args.log_epoch)#
-            # psedo_label
+
+            # pseudo_label
             pred_y, pred_score, pred_acc = trainer.estimate_label()
 
             # select data from target to source
@@ -159,24 +152,15 @@ if __name__ == '__main__':
     parser.add_argument('--eval_log_step', type=int, default=100)
     parser.add_argument('--test_interval', type=int, default=1500)
 
-    # whether resume
-
-    parser.add_argument('--resume', type=str, default=None)
-
     # hyper-parameters
-
     parser.add_argument('--seed', type=int, default=1, metavar='S',
                         help='random seed (default: 1)')
 
     parser.add_argument('-b', '--batch_size', type=int, default=4)
-    # parser.add_argument('--num_task', type=int, default=2)
-
-    # parser.add_argument('--epoch', type=int, default=8)
-    parser.add_argument('-g', '--gamma', type=float, default=0.3)
-    parser.add_argument('--threshold', type=float, default=0.6)
+    parser.add_argument('--threshold', type=float, default=0.1)
 
     parser.add_argument('--dropout', type=float, default=0.2)
-    parser.add_argument('--EF', type=int, default=100)
+    parser.add_argument('--EF', type=int, default=10)
     parser.add_argument('--loss', type=str, default='focal')
 
 
@@ -184,16 +168,7 @@ if __name__ == '__main__':
     parser.add_argument('--lr', type=float, default=1e-3)
     parser.add_argument('--weight_decay', type=float, default=5e-5)
 
-
-    #GNN parameters
-    # res 2048 vgg 4096
-    # if dataset == 'visda':
-    #     parser.add_argument('--in_features', type=int, default=2048)
-    # elif dataset == 'office':
-    #     parser.add_argument('--in_features', type=int, default=2048)
-    # elif dataset == 'home':
-    #     parser.add_argument('--in_features', type=int, default=2048)
-
+    # GNN parameters
     parser.add_argument('--in_features', type=int, default=2048)
     if dataset == 'home':
         parser.add_argument('--node_features', type=int, default=512)
@@ -206,12 +181,11 @@ if __name__ == '__main__':
 
     #tsne
     parser.add_argument('--visualization', type=bool, default=False)
-    parser.add_argument('--checkpoint_path', type=str, default='/home/zijian/Desktop/Open_DA_git/checkpoints/D-visda18_A-res_L-1_E-20_B-4_step_1.pth.tar')
+    parser.add_argument('--checkpoint_path', type=str, default='/home/Desktop/Open_DA_git/checkpoints/D-visda18_A-res_L-1_E-20_B-4_step_1.pth.tar')
 
     #Discrminator
     parser.add_argument('--discriminator', type=bool, default=True)
     parser.add_argument('--adv_coeff', type=float, default=0.4)
-
 
     #GNN hyper-parameters
     parser.add_argument('--node_loss', type=float, default=0.3)
