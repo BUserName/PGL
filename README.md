@@ -1,42 +1,37 @@
-# Anonymous Submission ID 591 for AAAI-2020
+# Anonymous Submission ID 136 for ICML-2020
 
 ### Requirements
 - Python 3.6
-- Pytorch 1.1
-- TensorboardX
+- Pytorch 1.3
 
 
 ### Datasets
 The links of datasets will be released afterwards,
-- MiniImageNet
-- TieredImageNet
-
+- Syn2Real-O (VisDA-18)
+- VisDA-17
+- Office-home
 
 
 ### Training
 The general command for training is,
-```bash
-python 3 train.py
+```
+python3 train.py
 ```
 Change arguments for different experiments:
-- dataset: "mini" / "tiered"
-- um_unlabeled: for semi-supervised learning
-- meta_batch_size: mini_batch size
+- dataset: "home" / "visda" / "visda18"
+- batch_size: mini_batch size
+- beta: The ratio of known target sample and Unk target sample in the pseudo label set
+- EF : Enlarging Factor α
 - num_layers: GNN's depth
-- num_cell: number of hidden states 
-- num_ways: N-way
-- num_shots: K-shot
-- seed: we select 111, 222, 333 for reproducibility
+- adv_coeff: adversarial loss coefficient γ
+- node_loss: node classification loss μ
+For the detailed hyper-parameters setting for each dataset, please refer to Section 5.2 and Appendix 3.  
 
 Remember to change dataset_root to suit your own case
 
-The training loss and validation accuracy will be automatically saved in './asset/logs/', which can be visualized with tensorboard.
-The model weights will be saved in './asset/checkpoints'
+The training loss and validation accuracy will be automatically saved in './logs/', which can be visualized with tensorboard.
+The model weights will be saved in './checkpoints'
 
-### Evaluation
-For testing the trained model, you can use the command as
-```
-python3 eval.py -test_model "THE_MODEL_NAME"
-```
+
 
 
