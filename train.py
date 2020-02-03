@@ -113,7 +113,7 @@ def set_exp_name(args):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='Exploit Domain Adaptation')
+    parser = argparse.ArgumentParser(description='Progressive Graph Learning for Open-set Domain Adaptation')
     # set up dataset & backbone embedding
     dataset = 'visda18'
     parser.add_argument('--dataset', type=str, default=dataset)
