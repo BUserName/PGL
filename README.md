@@ -1,4 +1,4 @@
-# Anonymous Submission ID 136 for ICML-2020
+# Progressive Graph Learning for Open-Set Domain Adaptation
 
 ### Requirements
 - Python 3.6
