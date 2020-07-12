@@ -3,19 +3,35 @@ import torch.nn as nn
 from torch.autograd import Function
 
 
-class GradReverse(Function):
-    def __init__(self, lambd):
-        self.lambd = lambd
+# class GradReverse(Function):
+#     def __init__(self, lambd):
+#         self.lambd = lambd
+#
+#     def forward(self, x):
+#         return x.view_as(x)
+#
+#     def backward(self, grad_output):
+#         return (grad_output * -self.lambd)
+# def grad_reverse(x, lambd=1.0):
+#     return GradReverse(lambd)(x)
 
-    def forward(self, x):
+class GradReverse(Function):
+
+    @staticmethod
+    def forward(ctx, x, alpha):
+        ctx.alpha = alpha
+
         return x.view_as(x)
 
-    def backward(self, grad_output):
-        return (grad_output * -self.lambd)
+    @staticmethod
+    def backward(ctx, grad_output):
+        output = grad_output.neg() * ctx.alpha
 
+        return output, None
 
 def grad_reverse(x, lambd=1.0):
-    return GradReverse(lambd)(x)
+    return GradReverse.apply(x, lambd)
+
 
 class Discriminator(nn.Module):
     def __init__(self, inc=4096):
