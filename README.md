@@ -33,7 +33,7 @@ The training loss and validation accuracy will be automatically saved in './logs
 The model weights will be saved in './checkpoints'
 
 ### TODO List
-- [ ] Update the GradReverse layer for Pytorch 1.4
+- [X] Update the GradReverse layer for Pytorch 1.4
 
 - [ ] Update detail config file for datasets
 
