@@ -7,9 +7,9 @@
 
 ### Datasets
 The links of datasets will be released afterwards,
-- Syn2Real-O (VisDA-18)
-- VisDA-17
-- Office-home
+- Syn2Real-O (VisDA-18) https://github.com/VisionLearningGroup/visda-2018-public/tree/master/openset
+- VisDA-17 https://github.com/VisionLearningGroup/taskcv-2017-public/tree/master/classification
+- Office-home https://www.hemanthdv.org/officeHomeDataset.html
 
 
 ### Training
