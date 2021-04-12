@@ -32,6 +32,15 @@ Remember to change dataset_root to suit your own case
 The training loss and validation accuracy will be automatically saved in './logs/', which can be visualized with tensorboard.
 The model weights will be saved in './checkpoints'
 
+### Without Pseudo-labeling Results
+
+VisDA-18
+
+Plane | Bike | Bus | Car | Horse | Knife | Motorcycle | Person | Plant | SkateB | Train | Truck | Unk | OS^* | OS |
+------|------| --- | --- | ----- | ----- | ---------- | ------ | ----- | ------ | ----- | ----- | --- | ---- | -- |
+0.640 | 0.695|0.501|0.509| 0.795 | 0.126 | 0.945      | 0.585  | 0.742 | 0.588  | 0.702 | 0.081 | 0.542|0.573 | 0.575|
+
+
 ### TODO List
 - [X] Update the GradReverse layer for Pytorch 1.4
 
