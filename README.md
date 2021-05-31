@@ -33,11 +33,11 @@ The training loss and validation accuracy will be automatically saved in './logs
 The model weights will be saved in './checkpoints'
 
 ### Graph Learning without Pseudo-labeling Results (ResNet-50)
-VisDA-18
+VisDA-18 (alpha=1, beta=0.6)
 
 Plane | Bike | Bus | Car | Horse | Knife | Motorcycle | Person | Plant | SkateB | Train | Truck | Unk | OS^* | OS |
 ------|------| --- | --- | ----- | ----- | ---------- | ------ | ----- | ------ | ----- | ----- | --- | ---- | -- |
-0.640 | 0.695|0.501|0.509| 0.795 | 0.126 | 0.945      | 0.585  | 0.742 | 0.588  | 0.702 | 0.081 | 0.542|0.573 | 0.575|
+0.437 | 0.807|0.588|0.646| 0.857 | 0.155 | 0.943      | 0.355  | 0.879 | 0.250  | 0.712 | 0.126 | 0.437 |0.553 | 0.563|
 
 Office-Home
 
