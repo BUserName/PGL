@@ -1,5 +1,8 @@
 # Progressive Graph Learning for Open-Set Domain Adaptation
 
+### News
+Please also check our extension work on the source free open set domain adaptation accepted by TPAMI23. Code available at: https://github.com/Luoyadan/SF-PGL 
+
 ### Requirements
 - Python 3.6
 - Pytorch 1.3
@@ -57,5 +60,24 @@ OS*|0.733|0.506|0.777|0.511|0.632|0.840|0.739|0.631|0.607|0.567|0.449|0.765|0.64
      
 - [ ] Fix progress bar
 
+
+```
+@inproceedings{luo2020progressive,
+  title={Progressive graph learning for open-set domain adaptation},
+  author={Luo, Yadan and Wang, Zijian and Huang, Zi and Baktashmotlagh, Mahsa},
+  booktitle={International Conference on Machine Learning},
+  pages={6468--6478},
+  year={2020},
+  organization={PMLR}
+}
+
+@article{luo2023source,
+  title={Source-free progressive graph learning for open-set domain adaptation},
+  author={Luo, Yadan and Wang, Zijian and Chen, Zhuoxiao and Huang, Zi and Baktashmotlagh, Mahsa},
+  journal={IEEE Transactions on Pattern Analysis and Machine Intelligence},
+  year={2023},
+  publisher={IEEE}
+}
+```
 
 
